@@ -12,7 +12,7 @@ namespace CarDealer.Data.Models
         public string Name { get; set; }
 
         [DataType(DataType.Date), Display(Name = "Birth Date")]
-        [DisplayFormat(DataFormatString = "{0:dd-mm-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "d", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
 
         public bool IsYoungDriver { get; set; }
