@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealer", "CarDealer\CarDealer.csproj", "{BCADF537-0C51-4A1B-ABD2-76844914C3BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealer.Web", "CarDealer\CarDealer.Web.csproj", "{BCADF537-0C51-4A1B-ABD2-76844914C3BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealer.Data", "CarDealer.Data\CarDealer.Data.csproj", "{DE30EEF4-5FCF-413E-8AD1-F03C30EFE420}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BCADF537-0C51-4A1B-ABD2-76844914C3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCADF537-0C51-4A1B-ABD2-76844914C3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCADF537-0C51-4A1B-ABD2-76844914C3BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE30EEF4-5FCF-413E-8AD1-F03C30EFE420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE30EEF4-5FCF-413E-8AD1-F03C30EFE420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE30EEF4-5FCF-413E-8AD1-F03C30EFE420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE30EEF4-5FCF-413E-8AD1-F03C30EFE420}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
