@@ -1,6 +1,6 @@
 ﻿using CarDealer.Services;
 using CarDealer.Services.Models;
-using CarDealer.Web.Models.Customers;
+using CarDealer.Web.Models.CustomersViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers
@@ -23,9 +23,9 @@ namespace CarDealer.Web.Controllers
 
             var orderedCustomers = this.customers.OrderedCustomers(orderType);
 
-            return View(new AllCustomersModel
+            return View(new AllCustomersViewModel
             {
-                Customers = orderedCustomers,
+                AllCustomers = orderedCustomers,
                 OrderType = orderType
             });
         }
