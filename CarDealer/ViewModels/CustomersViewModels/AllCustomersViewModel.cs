@@ -1,7 +1,7 @@
 ﻿using CarDealer.Services.Models;
 using System.Collections.Generic;
 
-namespace CarDealer.Web.Models.CustomersViewModels
+namespace CarDealer.Web.ViewModels.CustomersViewModels
 {
     public class AllCustomersViewModel
     {

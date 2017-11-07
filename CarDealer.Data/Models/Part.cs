@@ -15,7 +15,7 @@ namespace CarDealer.Data.Models
 
         [Range(0, double.MaxValue)]
         [Column(TypeName = "money")]
-        public double? Price { get; set; }
+        public double Price { get; set; }
 
         public int Quantity { get; set; }
 

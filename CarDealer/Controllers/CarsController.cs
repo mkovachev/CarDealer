@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CarDealer.Services;
-using CarDealer.Web.Models.CarViewModels;
 
 namespace CarDealer.Web.Controllers
 {
@@ -10,15 +9,19 @@ namespace CarDealer.Web.Controllers
 
         public CarsController(ICarService cars) => this.cars = cars;
 
-        [Route("cars/{make}")]
+        [Route("cars/parts", Order = 1)]
+        public IActionResult Parts()
+        {
+            var carsWithParts = this.cars.WithParts();
+            return View(carsWithParts);
+        }
+
+        [Route("cars/{make}", Order = 2)]
         public IActionResult Make(string make)
         {
             var carsbyMake = this.cars.ByMake(make);
 
-            return View(new CarsByMakeViewModel
-            {
-                CarsByMake = carsbyMake
-            });
+            return View(carsbyMake);
         }
     }
 }

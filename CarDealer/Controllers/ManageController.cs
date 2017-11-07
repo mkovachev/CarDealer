@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CarDealer.Data.Models;
-using CarDealer.Models.ManageViewModels;
+using CarDealer.ViewModels.ManageViewModels;
 
 namespace CarDealer.Controllers
 {

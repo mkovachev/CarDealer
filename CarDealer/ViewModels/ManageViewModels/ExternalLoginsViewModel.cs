@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 
-namespace CarDealer.Models.ManageViewModels
+namespace CarDealer.ViewModels.ManageViewModels
 {
     public class ExternalLoginsViewModel
     {

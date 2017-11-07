@@ -1,6 +1,6 @@
 ﻿using CarDealer.Services;
 using CarDealer.Services.Models;
-using CarDealer.Web.Models.CustomersViewModels;
+using CarDealer.Web.ViewModels.CustomersViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers

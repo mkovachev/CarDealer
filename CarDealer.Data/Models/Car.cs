@@ -19,6 +19,6 @@ namespace CarDealer.Data.Models
 
         public ICollection<Sale> Sales { get; set; } = new HashSet<Sale>();
 
-        public ICollection<PartCar> PartsCars { get; set; } = new HashSet<PartCar>();
+        public ICollection<PartCar> Parts { get; set; } = new HashSet<PartCar>();
     }
 }

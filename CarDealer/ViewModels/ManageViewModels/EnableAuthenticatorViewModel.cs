@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CarDealer.Models.ManageViewModels
+namespace CarDealer.ViewModels.ManageViewModels
 {
     public class EnableAuthenticatorViewModel
     {
