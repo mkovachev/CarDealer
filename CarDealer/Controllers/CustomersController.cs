@@ -14,7 +14,7 @@ namespace CarDealer.Web.Controllers
             this.customers = customers;
         }
 
-        [Route("/customers/all/{order}")]
+        [Route("customers/all/{order}")]
         public IActionResult All(string order)
         {
             var orderType = order.ToLower() == "descending"
