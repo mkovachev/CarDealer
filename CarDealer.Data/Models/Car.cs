@@ -14,6 +14,7 @@ namespace CarDealer.Data.Models
         [Required]
         public string Model { get; set; }
 
+        [Range(0, long.MaxValue)]
         public long TravelledDistance { get; set; }
 
         public ICollection<Sale> Sales { get; set; } = new HashSet<Sale>();
