@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using CarDealer.Services;
+﻿using CarDealer.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers
 {
