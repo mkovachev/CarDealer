@@ -10,7 +10,7 @@ namespace CarDealer.Web.Controllers
         public CarsController(ICarService cars) => this.cars = cars;
 
         [Route("cars/parts", Order = 1)]
-        public IActionResult Parts()
+        public IActionResult WithParts()
         {
             var carsWithParts = this.cars.WithParts();
             return View(carsWithParts);

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SupplierModel>
+@{
+    ViewData["Title"] = "Suppliers";
+}
+<h2>Suppliers</h2>
+<table class="table table-bordered table-hover">
+    @foreach (var supplier in Model)
+    {
+        <tr>
+            <td>@supplier.Name</td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    @foreach (var part in supplier.Parts)
+                    {
+                        <li>@part.Name: $@part.Price.ToString("F2")</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+</table>

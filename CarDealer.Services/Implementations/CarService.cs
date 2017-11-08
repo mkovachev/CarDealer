@@ -31,20 +31,20 @@ namespace CarDealer.Services.Implementations
 
         public IEnumerable<CarWithPartsModel> WithParts()
         {
-            return this.db
-                          .Cars
-                          .Select(c => new CarWithPartsModel
-                          {
-                              Make = c.Make,
-                              Model = c.Model,
-                              TravelledDistance = c.TravelledDistance / 1000,
-                              Parts = c.Parts.Select(p => new PartsModel
-                              {
-                                  Name = p.Part.Name,
-                                  Price = p.Part.Price
-                              })
-                          })
-                          .ToList();
+            var cars = this.db.Cars.AsQueryable();
+
+            return cars
+                   .Select(s => new CarWithPartsModel
+                   {
+                       Make = s.Make,
+                       Model = s.Model,
+                       Parts = s.Parts.Select(p => new PartsModel //TODO
+                       {
+                           Name = p.Part.Name,
+                           Price = (decimal)p.Part.Price
+                       })
+                   })
+                .ToList();
         }
     }
 }

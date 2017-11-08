@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers
 {
+    [Route("customers")]
     public class CustomersController : Controller
     {
         private readonly ICustomerService customers;
@@ -14,7 +15,7 @@ namespace CarDealer.Web.Controllers
             this.customers = customers;
         }
 
-        [Route("customers/all/{order}")]
+        [Route("all/{order}", Order = 2)]
         public IActionResult All(string order)
         {
             var orderType = order.ToLower() == "descending"
@@ -28,6 +29,12 @@ namespace CarDealer.Web.Controllers
                 AllCustomers = orderedCustomers,
                 OrderType = orderType
             });
+        }
+
+        [Route("{id}", Order = 1)]
+        public IActionResult TotalSales(int id)
+        {
+            return View(this.customers.TotalSales(id));
         }
     }
 }

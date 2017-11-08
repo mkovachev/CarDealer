@@ -1,0 +1,26 @@
+﻿@model IEnumerable<CarWithPartsModel>
+@{
+    ViewData["Title"] = "Cars with Parts";
+}
+<h2>Cars with Parts</h2>
+<table class="table table-bordered table-hover">
+    @foreach (var car in Model)
+    {
+        <tr>
+            <td>@car.Make</td>
+            <td>@car.Model</td>
+            <td>@car.Parts</td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    @foreach (var part in car.Parts)
+                    {
+                        <li>@part.Name: $@part.Price.ToString("F2")</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+
+</table>

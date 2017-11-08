@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CarDealer.Services.Models;
 using CarDealer.Data;
 using System.Linq;
+using CarDealer.Services.Models.Customers;
 
 namespace CarDealer.Services.Implementations
 {
@@ -40,6 +41,21 @@ namespace CarDealer.Services.Implementations
                     IsYoungDriver = c.IsYoungDriver
                 })
                 .ToList();
+        }
+
+        public IEnumerable<CustomersTotalSalesModel> TotalSales(int id)
+        {
+            yield return this.db
+                                .Customers
+                                .Where(c => c.Id == id)
+                                .Select(c => new CustomersTotalSalesModel
+                                {
+                                    Id = c.Id,
+                                    Name = c.Name,
+                                    TotalBoughtCars = c.Sales.Count(),
+                                    TotalSpentMoney = c.Sales.Sum(s => s.Car.Parts.Sum(p => p.Part.Price))
+                                })
+                                .FirstOrDefault();
         }
     }
 }

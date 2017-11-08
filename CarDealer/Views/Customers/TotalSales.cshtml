@@ -1,0 +1,26 @@
+﻿@model IEnumerable<CustomersTotalSalesModel>
+@{
+    ViewData["Title"] = "TotalSales";
+}
+
+<h2>TotalSales</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>TotalBoughtCars</th>
+            <th>TotalSpentMoney</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Name</td>
+                <td>@car.TotalBoughtCars</td>
+                <td>@car.TotalSpentMoney.ToString("F2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
