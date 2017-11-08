@@ -1,7 +1,6 @@
 ﻿using CarDealer.Data;
 using CarDealer.Data.Models;
-using CarDealer.Services;
-using CarDealer.Services.Implementations;
+using CarDealer.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -30,9 +29,7 @@ namespace CarDealer
                 .AddDefaultTokenProviders();
 
             // Add services
-            services.AddTransient<ICustomerService, CustomerService>();
-            services.AddTransient<ICarService, CarService>();
-            services.AddTransient<ISupplierService, SupplierService>();
+            services.AddServices();
 
             services.AddMvc();
         }

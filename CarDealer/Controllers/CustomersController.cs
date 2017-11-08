@@ -1,5 +1,5 @@
 ﻿using CarDealer.Services;
-using CarDealer.Services.Models;
+using CarDealer.Services.Models.Enums;
 using CarDealer.Web.ViewModels.CustomersViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +18,7 @@ namespace CarDealer.Web.Controllers
         [Route("all/{order}", Order = 2)]
         public IActionResult All(string order)
         {
-            var orderType = order.ToLower() == "descending"
+            var orderType = order.ToLower() == "descending" // convert string order to enum type
                 ? OrderType.Descending
                 : OrderType.Ascending;
 
