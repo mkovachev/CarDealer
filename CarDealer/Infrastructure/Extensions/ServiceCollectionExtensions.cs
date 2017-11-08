@@ -19,7 +19,7 @@ namespace CarDealer.Web.Infrastructure.Extensions
                     Service = t
                 })
                 .ToList()
-                .ForEach(s => services.AddTransient(s.Interface, s.Service));//
+                .ForEach(s => services.AddTransient(s.Interface, s.Service));
 
             return services;
         }
