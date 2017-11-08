@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CarDealer.Data;
 using CarDealer.Services.Models;
-using CarDealer.Data;
-using System.Linq;
 using CarDealer.Services.Models.Customers;
+using CarDealer.Services.Models.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarDealer.Services.Implementations
 {
