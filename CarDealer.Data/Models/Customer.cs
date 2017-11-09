@@ -11,8 +11,7 @@ namespace CarDealer.Data.Models
         [Required]
         public string Name { get; set; }
 
-        [DataType(DataType.Date), Display(Name = "Birth Date")]
-        [DisplayFormat(DataFormatString = "d", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
         public bool IsYoungDriver { get; set; }

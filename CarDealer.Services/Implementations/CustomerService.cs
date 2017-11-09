@@ -1,4 +1,5 @@
 ﻿using CarDealer.Data;
+using CarDealer.Data.Models;
 using CarDealer.Services.Models;
 using CarDealer.Services.Models.Customers;
 using CarDealer.Services.Models.Enums;
@@ -14,7 +15,20 @@ namespace CarDealer.Services.Implementations
 
         public CustomerService(CarDealerDbContext db) => this.db = db;
 
-        public IEnumerable<CustomerModel> OrderedCustomers(OrderType orderType)
+        public void Create(string name, DateTime birthDate, bool isYoungDriver)
+        {
+            var customer = new Customer
+            {
+                Name = name,
+                BirthDate = birthDate,
+                IsYoungDriver = isYoungDriver
+            };
+
+            this.db.Add(customer);
+            this.db.SaveChanges();
+        }
+
+        public IEnumerable<CustomerModel> GetCustomersByOrderType(OrderType orderType)
         {
             var customersQuery = this.db.Customers.AsQueryable();
 
@@ -44,19 +58,19 @@ namespace CarDealer.Services.Implementations
                 .ToList();
         }
 
-        public IEnumerable<CustomersTotalSalesModel> TotalSales(int id)
+        public IEnumerable<CustomersTotalSalesModel> GetTotalSalesById(int id)
         {
             yield return this.db
-                                .Customers
-                                .Where(c => c.Id == id)
-                                .Select(c => new CustomersTotalSalesModel
-                                {
-                                    Id = c.Id,
-                                    Name = c.Name,
-                                    TotalBoughtCars = c.Sales.Count(),
-                                    TotalSpentMoney = c.Sales.Sum(s => s.Car.Parts.Sum(p => p.Part.Price))
-                                })
-                                .FirstOrDefault();
+                          .Customers
+                          .Where(c => c.Id == id)
+                          .Select(c => new CustomersTotalSalesModel
+                          {
+                              Id = c.Id,
+                              Name = c.Name,
+                              TotalBoughtCars = c.Sales.Count(),
+                              TotalSpentMoney = c.Sales.Sum(s => s.Car.Parts.Sum(p => p.Part.Price))
+                          })
+                          .FirstOrDefault();
         }
     }
 }
