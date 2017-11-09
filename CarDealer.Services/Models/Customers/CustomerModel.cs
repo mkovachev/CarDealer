@@ -6,6 +6,9 @@ namespace CarDealer.Services.Models
     public class CustomerModel
     {
         [Required]
+        public int Id { get; set; }
+
+        [Required]
         [MaxLength(30)]
         public string Name { get; set; }
 
