@@ -15,6 +15,19 @@ namespace CarDealer.Services.Implementations
 
         public CustomerService(CarDealerDbContext db) => this.db = db;
 
+        public CustomerModel GetById(int id)
+            => this.db
+                .Customers
+                .Where(c => c.Id == id)
+                .Select(c => new CustomerModel
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    BirthDate = c.BirthDate,
+                    IsYoungDriver = c.IsYoungDriver
+                })
+                .FirstOrDefault();
+
         public void Create(string name, DateTime birthDate, bool isYoungDriver)
         {
             var customer = new Customer

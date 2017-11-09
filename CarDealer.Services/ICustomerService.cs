@@ -12,6 +12,8 @@ namespace CarDealer.Services
 
         IEnumerable<CustomersTotalSalesModel> GetTotalSalesById(int id);
 
+        CustomerModel GetById(int id);
+
         void Create(string Name, DateTime BirthDate, bool isYoungDriver);
     }
 }

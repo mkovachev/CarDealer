@@ -11,11 +11,32 @@ namespace CarDealer.Web.Controllers
     {
         private readonly ICustomerService customers;
 
-        public CustomersController(ICustomerService customers)
+        public CustomersController(ICustomerService customers) => this.customers = customers;
+
+        //page edit/{id}
+        [Route(nameof(Edit) + "/{id}")]
+        public IActionResult Edit() => View();
+
+        [HttpPost]
+        [Route(nameof(Edit) + "/{id}")]
+        public IActionResult Edit(int id)
         {
-            this.customers = customers;
+            var customer = this.customers.GetById(id);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return View(new CustomerModel
+            {
+                Name = customer.Name,
+                BirthDate = customer.BirthDate,
+                IsYoungDriver = customer.IsYoungDriver
+            });
         }
 
+        // page create
         [Route(nameof(Create))]
         public IActionResult Create() => View();
 
@@ -23,6 +44,8 @@ namespace CarDealer.Web.Controllers
         [Route(nameof(Create))]
         public IActionResult Create(CustomerModel model)
         {
+            // TODO check if user exit
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -38,12 +61,9 @@ namespace CarDealer.Web.Controllers
         }
 
         [Route("{id}", Order = 2)]
-        public IActionResult TotalSales(int id)
-        {
-            return View(this.customers.GetTotalSalesById(id));
-        }
+        public IActionResult TotalSales(int id) => View(this.customers.GetTotalSalesById(id));
 
-        [Route("all/{orderType}", Order = 3)]
+        [Route("all/{orderType}", Order = 2)]
         public IActionResult All(OrderType orderType)
         {
             var orderedCustomers = this.customers.GetCustomersByOrderType(orderType);

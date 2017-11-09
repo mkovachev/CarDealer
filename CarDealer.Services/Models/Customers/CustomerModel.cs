@@ -5,7 +5,6 @@ namespace CarDealer.Services.Models
 {
     public class CustomerModel
     {
-        [Required]
         public int Id { get; set; }
 
         [Required]

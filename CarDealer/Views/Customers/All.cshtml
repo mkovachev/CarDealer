@@ -2,15 +2,13 @@
 @{
     ViewData["Title"] = "All Customers";
 }
-
-<h2>All customer in @Model.OrderType.ToString().ToLower() order</h2>
-
+<h2>All customers in @Model.OrderType.ToString().ToLower() order</h2>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Name</th>
             <th>Birthday</th>
-            <th>Is Young Driver</th>
+            <th>Young Driver</th>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +17,11 @@
             <tr>
                 <td>@customer.Name</td>
                 <td>@customer.BirthDate.ToShortDateString()</td>
-                <td>@customer.IsYoungDriver</td>
+                <td>@(customer.IsYoungDriver == true ? "Yes" : "No")</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/customers/edit/@customer.Id">Edit</a>
+                </td>
             </tr>
         }
     </tbody>
 </table>
-
