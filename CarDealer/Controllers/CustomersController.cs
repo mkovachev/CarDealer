@@ -13,11 +13,6 @@ namespace CarDealer.Web.Controllers
 
         public CustomersController(ICustomerService customers) => this.customers = customers;
 
-        //page edit/{id}
-        [Route(nameof(Edit) + "/{id}")]
-        public IActionResult Edit() => View();
-
-        [HttpPost]
         [Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id)
         {
@@ -36,7 +31,32 @@ namespace CarDealer.Web.Controllers
             });
         }
 
-        // page create
+        [HttpPost]
+        [Route(nameof(Edit) + "/{id}")]
+        public IActionResult Edit(int id, CustomerModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var customer = this.customers.Exists(id);
+
+            if (!customer)
+            {
+                return NotFound();
+            }
+
+            this.customers.Edit(
+                id,
+                model.Name,
+                model.BirthDate,
+                model.IsYoungDriver
+                );
+
+            return RedirectToAction(nameof(All), new { orderType = OrderType.Ascending });
+        }
+
         [Route(nameof(Create))]
         public IActionResult Create() => View();
 
@@ -44,8 +64,6 @@ namespace CarDealer.Web.Controllers
         [Route(nameof(Create))]
         public IActionResult Create(CustomerModel model)
         {
-            // TODO check if user exit
-
             if (!ModelState.IsValid)
             {
                 return View(model);

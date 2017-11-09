@@ -28,6 +28,23 @@ namespace CarDealer.Services.Implementations
                 })
                 .FirstOrDefault();
 
+        public void Edit(int id, string name, DateTime birthDate, bool isYoungDriver)
+        {
+            var existingCustomer = this.db.Customers.Find(id);
+
+            if(existingCustomer == null)
+            {
+                return;
+            }
+
+            existingCustomer.Name = name;
+            existingCustomer.BirthDate = birthDate;
+            existingCustomer.IsYoungDriver = isYoungDriver;
+
+            this.db.SaveChanges();
+
+        }
+
         public void Create(string name, DateTime birthDate, bool isYoungDriver)
         {
             var customer = new Customer
@@ -85,6 +102,16 @@ namespace CarDealer.Services.Implementations
                               TotalSpentMoney = c.Sales.Sum(s => s.Car.Parts.Sum(p => p.Part.Price))
                           })
                           .FirstOrDefault();
+        }
+
+        public bool Exists(int id)
+        {
+            return this.db.Customers.Any(c => c.Id == id);
+        }
+
+        public bool ExistsByName(string name)
+        {
+            return this.db.Customers.Any(c => c.Name == name);
         }
     }
 }
