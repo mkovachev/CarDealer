@@ -37,11 +37,10 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/customers/create">Create</a></li>
-                            <li><a href="/customers/all/ascending">All</a></li>
+                            <li><a href="/customers/all/ascending">All Customers</a></li>
+                            <li><a href="/customers/add">Add Customer</a></li>
                         </ul>
                     </li>
-                    <li><a href="/sales">Sales</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="/customers">
                             Cars
@@ -49,11 +48,20 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="/cars/all">All Cars</a></li>
-                            <li><a href="/cars/make">Cars By Make</a></li>
-                            <li><a href="/cars/parts">Car with Parts</a></li>
+                            <li><a href="/cars/parts">All Cars with Parts Details</a></li>
                         </ul>
                     </li>
-                    <li><a href="/parts/all">Parts</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/customers">
+                            Parts
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/parts/all">All Parts</a></li>
+                            <li><a href="/parts/add">Add Part</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/sales">Sales</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

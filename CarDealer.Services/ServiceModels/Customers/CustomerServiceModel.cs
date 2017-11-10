@@ -11,9 +11,11 @@ namespace CarDealer.Services.ServiceModels.Customers
         [MaxLength(30)]
         public string Name { get; set; }
 
+        [Display(Name = "Birth date")]
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
+        [Display(Name = "Young Driver")]
         public bool IsYoungDriver { get; set; }
     }
 }

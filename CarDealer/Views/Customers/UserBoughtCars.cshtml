@@ -1,0 +1,21 @@
+﻿@model CustomersTotalSalesServiceModel
+@{
+    ViewData["Title"] = $"{@Model.Name} Cars Inventory";
+}
+<h2>@ViewData["Title"]</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>TotalBoughtCars</th>
+            <th>TotalSpentMoney</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.BoughtCars</td>
+            <td>@Model.TotalSpentMoney.ToString("F2")</td>
+        </tr>
+    </tbody>
+</table>

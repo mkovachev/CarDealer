@@ -15,7 +15,7 @@ namespace CarDealer.Services.Services
 
         public CustomerService(CarDealerDbContext db) => this.db = db;
 
-        public CustomerServiceModel GetById(int id)
+        public CustomerServiceModel GetCustomerById(int id)
             => this.db
                 .Customers
                 .Where(c => c.Id == id)
@@ -30,16 +30,16 @@ namespace CarDealer.Services.Services
 
         public void Edit(int id, string name, DateTime birthDate, bool isYoungDriver)
         {
-            var existingCustomer = this.db.Customers.Find(id);
+            var customer = this.db.Customers.Find(id);
 
-            if(existingCustomer == null)
+            if (customer == null)
             {
                 return;
             }
 
-            existingCustomer.Name = name;
-            existingCustomer.BirthDate = birthDate;
-            existingCustomer.IsYoungDriver = isYoungDriver;
+            customer.Name = name;
+            customer.BirthDate = birthDate;
+            customer.IsYoungDriver = isYoungDriver;
 
             this.db.SaveChanges();
 
@@ -89,19 +89,20 @@ namespace CarDealer.Services.Services
                 .ToList();
         }
 
-        public IEnumerable<CustomersTotalSalesServiceModel> GetTotalSalesById(int id)
+        public CustomersTotalSalesServiceModel GetBoughtCarsByUserId(int id)
         {
-            yield return this.db
-                          .Customers
-                          .Where(c => c.Id == id)
-                          .Select(c => new CustomersTotalSalesServiceModel
-                          {
-                              Id = c.Id,
-                              Name = c.Name,
-                              TotalBoughtCars = c.Sales.Count(),
-                              TotalSpentMoney = c.Sales.Sum(s => s.Car.Parts.Sum(p => p.Part.Price))
+            return this.db
+                      .Customers
+                      .Where(c => c.Id == id)
+                      .Select(c => new CustomersTotalSalesServiceModel
+                      {
+                          Id = c.Id,
+                          Name = c.Name,
+                          BoughtCars = c.Sales.Count(),
+                          TotalSpentMoney = c.Sales.
+                          Sum(s => s.Car.Parts.Sum(p => p.Part.Price)) // TODO
                           })
-                          .FirstOrDefault();
+                      .FirstOrDefault();
         }
 
         public bool Exists(int id)

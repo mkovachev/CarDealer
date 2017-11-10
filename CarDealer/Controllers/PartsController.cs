@@ -1,4 +1,5 @@
 ﻿using CarDealer.Services.Contracts;
+using CarDealer.Services.ServiceModels.Parts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers
@@ -14,6 +15,32 @@ namespace CarDealer.Web.Controllers
         public IActionResult All()
         {
             return View(this.parts.GetAllParts());
+        }
+
+        [Route(nameof(Edit) + "/{id}")]
+        public IActionResult Edit(int id)
+        {
+            var part = this.parts.GetPartById(id);
+
+            if (part == null)
+            {
+                return NotFound();
+            }
+
+            return View(new PartListingServiceModel
+            {
+                Name = part.Name,
+                Price = part.Price,
+                Quantity = part.Quantity,
+                Supplier = part.Supplier
+            });
+        }
+
+        [HttpPost]
+        [Route(nameof(Edit) + "/{id}")]
+        public IActionResult Edit(int id, PartListingServiceModel model)
+        {
+            return null;
         }
     }
 }

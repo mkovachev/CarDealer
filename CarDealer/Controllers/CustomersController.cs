@@ -16,7 +16,7 @@ namespace CarDealer.Web.Controllers
         [Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id)
         {
-            var customer = this.customers.GetById(id);
+            var customer = this.customers.GetCustomerById(id);
 
             if (customer == null)
             {
@@ -57,12 +57,12 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction(nameof(All), new { orderType = OrderType.Ascending });
         }
 
-        [Route(nameof(Create))]
-        public IActionResult Create() => View();
+        [Route(nameof(Add))]
+        public IActionResult Add() => View();
 
         [HttpPost]
-        [Route(nameof(Create))]
-        public IActionResult Create(CustomerServiceModel model)
+        [Route(nameof(Add))]
+        public IActionResult Add(CustomerServiceModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace CarDealer.Web.Controllers
         }
 
         [Route("{id}", Order = 2)]
-        public IActionResult TotalSales(int id) => View(this.customers.GetTotalSalesById(id));
+        public IActionResult UserBoughtCars(int id) => View(this.customers.GetBoughtCarsByUserId(id));
 
         [Route("all/{orderType}", Order = 2)]
         public IActionResult All(OrderType orderType)

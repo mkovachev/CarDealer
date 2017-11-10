@@ -40,7 +40,7 @@ namespace CarDealer.Services.Services
                     Parts = s.Parts.Select(p => new PartServiceModel
                     {
                         Name = p.Name,
-                        Price = (decimal)p.Price
+                        Price = p.Price
                     })
                 })
                 .ToList();

@@ -55,10 +55,10 @@ namespace CarDealer.Services.Services
                    {
                        Make = s.Make,
                        Model = s.Model,
-                       Parts = s.Parts.Select(p => new PartServiceModel //TODO
+                       Parts = s.Parts.Select(p => new PartServiceModel // TODO
                        {
                            Name = p.Part.Name,
-                           Price = (decimal)p.Part.Price
+                           Price = p.Part.Price
                        })
                    })
                 .ToList();

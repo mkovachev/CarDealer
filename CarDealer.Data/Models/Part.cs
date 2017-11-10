@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarDealer.Data.Models
 {
@@ -14,12 +13,11 @@ namespace CarDealer.Data.Models
         public string Name { get; set; }
 
         [Range(0, double.MaxValue)]
-        [Column(TypeName = "money")]
         public double Price { get; set; }
 
         public int Quantity { get; set; }
 
-        public ICollection<PartCar> PartsCars { get; set; } = new HashSet<PartCar>();
+        public ICollection<PartCar> Parts { get; set; } = new HashSet<PartCar>();
 
         public Supplier Supplier { get; set; }
     }

@@ -9,9 +9,9 @@ namespace CarDealer.Services.Contracts
     {
         IEnumerable<CustomerServiceModel> GetCustomersByOrderType(OrderType orderType);
 
-        IEnumerable<CustomersTotalSalesServiceModel> GetTotalSalesById(int id);
+        CustomersTotalSalesServiceModel GetBoughtCarsByUserId(int id);
 
-        CustomerServiceModel GetById(int id);
+        CustomerServiceModel GetCustomerById(int id);
 
         void Create(string name, DateTime birthDate, bool isYoungDriver);
 

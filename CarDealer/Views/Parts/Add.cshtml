@@ -1,0 +1,12 @@
+﻿@model PartListingServiceModel
+@{
+    ViewData["Title"] = "Add Part";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.Partial("_CreateOrEditForm", Model)
+    </div>
+</div>
