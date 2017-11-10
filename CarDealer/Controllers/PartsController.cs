@@ -40,7 +40,12 @@ namespace CarDealer.Web.Controllers
         [Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id, PartListingServiceModel model)
         {
-            return null;
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var 
         }
     }
 }
