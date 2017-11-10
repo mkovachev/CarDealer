@@ -12,7 +12,7 @@ namespace CarDealer.Web.Controllers
         [Route("suppliers/{type}")]
         public IActionResult ByType(string type)
         {       
-            var suppliersByType = this.suppliers.ByType(type);
+            var suppliersByType = this.suppliers.GetSuppliersByType(type);
 
             return View(suppliersByType);
         }

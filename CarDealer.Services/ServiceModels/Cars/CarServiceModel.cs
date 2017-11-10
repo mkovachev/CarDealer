@@ -1,6 +1,6 @@
-﻿namespace CarDealer.Services.Models
+﻿namespace CarDealer.Services.ServiceModels.Cars
 {
-    public class CarModel
+    public class CarServiceModel
     {
         public string Model { get; set; }
 

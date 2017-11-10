@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CarDealer.Services.Models
+namespace CarDealer.Services.ServiceModels.Customers
 {
-    public class CustomerModel
+    public class CustomerServiceModel
     {
         public int Id { get; set; }
 

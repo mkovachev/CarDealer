@@ -1,7 +1,7 @@
 ﻿using CarDealer.Data;
 using CarDealer.Services.Contracts;
-using CarDealer.Services.Models;
-using CarDealer.Services.Models.Suppliers;
+using CarDealer.Services.ServiceModels.Parts;
+using CarDealer.Services.ServiceModels.Suppliers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace CarDealer.Services.Services
 
         public SupplierService(CarDealerDbContext db) => this.db = db;
 
-        public IEnumerable<SupplierModel> ByType(string supplierType)
+        public IEnumerable<SupplierServiceModel> GetSuppliersByType(string supplierType)
         {
             var suppliers = this.db.Suppliers.AsQueryable();
 
@@ -34,10 +34,10 @@ namespace CarDealer.Services.Services
             }
 
             return suppliers
-                .Select(s => new SupplierModel
+                .Select(s => new SupplierServiceModel
                 {
                     Name = s.Name,
-                    Parts = s.Parts.Select(p => new PartsModel
+                    Parts = s.Parts.Select(p => new PartServiceModel
                     {
                         Name = p.Name,
                         Price = (decimal)p.Price

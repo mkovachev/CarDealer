@@ -12,14 +12,14 @@ namespace CarDealer.Web.Controllers
         [Route("cars/parts", Order = 1)]
         public IActionResult WithParts()
         {
-            var carsWithParts = this.cars.WithParts();
+            var carsWithParts = this.cars.GetCarsWithParts();
             return View(carsWithParts);
         }
 
         [Route("cars/{make}", Order = 2)]
         public IActionResult Make(string make)
         {
-            var carsbyMake = this.cars.ByMake(make);
+            var carsbyMake = this.cars.GetCarsByMake(make);
 
             return View(carsbyMake);
         }

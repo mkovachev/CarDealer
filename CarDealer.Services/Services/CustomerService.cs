@@ -2,8 +2,7 @@
 using CarDealer.Data.Models;
 using CarDealer.Services.Contracts;
 using CarDealer.Services.Enums;
-using CarDealer.Services.Models;
-using CarDealer.Services.Models.Customers;
+using CarDealer.Services.ServiceModels.Customers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +15,11 @@ namespace CarDealer.Services.Services
 
         public CustomerService(CarDealerDbContext db) => this.db = db;
 
-        public CustomerModel GetById(int id)
+        public CustomerServiceModel GetById(int id)
             => this.db
                 .Customers
                 .Where(c => c.Id == id)
-                .Select(c => new CustomerModel
+                .Select(c => new CustomerServiceModel
                 {
                     Id = c.Id,
                     Name = c.Name,
@@ -59,7 +58,7 @@ namespace CarDealer.Services.Services
             this.db.SaveChanges();
         }
 
-        public IEnumerable<CustomerModel> GetCustomersByOrderType(OrderType orderType)
+        public IEnumerable<CustomerServiceModel> GetCustomersByOrderType(OrderType orderType)
         {
             var customersQuery = this.db.Customers.AsQueryable();
 
@@ -80,7 +79,7 @@ namespace CarDealer.Services.Services
             }
 
             return customersQuery
-                .Select(c => new CustomerModel
+                .Select(c => new CustomerServiceModel
                 {
                     Id = c.Id,
                     Name = c.Name,
@@ -90,12 +89,12 @@ namespace CarDealer.Services.Services
                 .ToList();
         }
 
-        public IEnumerable<CustomersTotalSalesModel> GetTotalSalesById(int id)
+        public IEnumerable<CustomersTotalSalesServiceModel> GetTotalSalesById(int id)
         {
             yield return this.db
                           .Customers
                           .Where(c => c.Id == id)
-                          .Select(c => new CustomersTotalSalesModel
+                          .Select(c => new CustomersTotalSalesServiceModel
                           {
                               Id = c.Id,
                               Name = c.Name,

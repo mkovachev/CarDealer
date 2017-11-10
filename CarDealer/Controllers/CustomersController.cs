@@ -1,6 +1,6 @@
 ﻿using CarDealer.Services.Contracts;
 using CarDealer.Services.Enums;
-using CarDealer.Services.Models;
+using CarDealer.Services.ServiceModels.Customers;
 using CarDealer.Web.ViewModels.CustomersViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +23,7 @@ namespace CarDealer.Web.Controllers
                 return NotFound();
             }
 
-            return View(new CustomerModel
+            return View(new CustomerServiceModel
             {
                 Name = customer.Name,
                 BirthDate = customer.BirthDate,
@@ -33,7 +33,7 @@ namespace CarDealer.Web.Controllers
 
         [HttpPost]
         [Route(nameof(Edit) + "/{id}")]
-        public IActionResult Edit(int id, CustomerModel model)
+        public IActionResult Edit(int id, CustomerServiceModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace CarDealer.Web.Controllers
 
         [HttpPost]
         [Route(nameof(Create))]
-        public IActionResult Create(CustomerModel model)
+        public IActionResult Create(CustomerServiceModel model)
         {
             if (!ModelState.IsValid)
             {

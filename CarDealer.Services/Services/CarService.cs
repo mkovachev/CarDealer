@@ -1,7 +1,7 @@
 ﻿using CarDealer.Data;
 using CarDealer.Services.Contracts;
-using CarDealer.Services.Models;
-using CarDealer.Services.Models.Cars;
+using CarDealer.Services.ServiceModels.Cars;
+using CarDealer.Services.ServiceModels.Parts;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,7 +13,7 @@ namespace CarDealer.Services.Services
 
         public CarService(CarDealerDbContext db) => this.db = db;
 
-        public IEnumerable<CarModel> ByMake(string make)
+        public IEnumerable<CarServiceModel> GetCarsByMake(string make)
         {
             var cars = this.db.Cars.AsQueryable();
 
@@ -23,7 +23,7 @@ namespace CarDealer.Services.Services
                   .Where(c => c.Make == make)
                   .OrderBy(c => c.Model)
                   .ThenByDescending(c => c.TravelledDistance)
-                  .Select(c => new CarModel
+                  .Select(c => new CarServiceModel
                   {
                       Make = c.Make,
                       Model = c.Model,
@@ -36,7 +36,7 @@ namespace CarDealer.Services.Services
             return cars
                     .OrderBy(c => c.Model)
                     .ThenByDescending(c => c.TravelledDistance)
-                    .Select(c => new CarModel
+                    .Select(c => new CarServiceModel
                     {
                         Make = c.Make,
                         Model = c.Model,
@@ -46,16 +46,16 @@ namespace CarDealer.Services.Services
 
         }
 
-        public IEnumerable<CarWithPartsModel> WithParts()
+        public IEnumerable<CarWithPartsServiceModel> GetCarsWithParts()
         {
             var cars = this.db.Cars.AsQueryable();
 
             return cars
-                   .Select(s => new CarWithPartsModel
+                   .Select(s => new CarWithPartsServiceModel
                    {
                        Make = s.Make,
                        Model = s.Model,
-                       Parts = s.Parts.Select(p => new PartsModel //TODO
+                       Parts = s.Parts.Select(p => new PartServiceModel //TODO
                        {
                            Name = p.Part.Name,
                            Price = (decimal)p.Part.Price

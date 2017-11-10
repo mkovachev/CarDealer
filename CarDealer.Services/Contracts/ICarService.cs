@@ -1,13 +1,12 @@
-﻿using CarDealer.Services.Models;
-using CarDealer.Services.Models.Cars;
+﻿using CarDealer.Services.ServiceModels.Cars;
 using System.Collections.Generic;
 
 namespace CarDealer.Services.Contracts
 {
     public interface ICarService
     {
-        IEnumerable<CarModel> ByMake(string make);
+        IEnumerable<CarServiceModel> GetCarsByMake(string make);
 
-        IEnumerable<CarWithPartsModel> WithParts();
+        IEnumerable<CarWithPartsServiceModel> GetCarsWithParts();
     }
 }
