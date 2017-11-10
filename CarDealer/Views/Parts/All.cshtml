@@ -1,18 +1,22 @@
-﻿@model IEnumerable<PartListingServiceModel>
+﻿@model PartPaginationViewModel
 @{
     ViewData["Title"] = "All Parts";
 }
-
 <h2>@ViewData["Title"]</h2>
 
-<ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-</ul>
+@{ 
+    var previousDisabled = Model.Current == 1 ? "disabled" : String.Empty;
+    var nextDisabled = Model.Next == Model.TotalPages ? "disabled" : String.Empty;
+}
 
+<ul class="pagination">
+    <li class="page-item @previousDisabled"><a class="page-link" href="/parts/all?page=@Model.Previous">Previous</a></li>
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        <li class="page-item @(Model.Current == i ? "active" : String.Empty)"><a class="page-link info" href="/parts/all?page=@i">@i</a></li>
+    }
+    <li class="page-item @nextDisabled"><a class="page-link" href="/parts/all?page=@Model.Next">Next</a></li>
+</ul>
 
 <table class="table table-bordered table-hover">
     <thead>
@@ -24,7 +28,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var part in Model)
+        @foreach (var part in Model.Parts)
         {
             <tr>
                 <td>@part.Name</td>

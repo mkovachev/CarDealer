@@ -1,6 +1,6 @@
 ﻿namespace CarDealer.Services.ServiceModels.Parts
 {
-    public class PartListingServiceModel: PartServiceModel
+    public class PartExtendedServiceModel: PartServiceModel
     {
         public int Quantity { get; set; }
 

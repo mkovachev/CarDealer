@@ -5,9 +5,11 @@ namespace CarDealer.Services.Contracts
 {
     public interface IPartService
     {
-        IEnumerable<PartListingServiceModel> GetAllParts(int page = 1);
+        IEnumerable<PartExtendedServiceModel> GetAllParts(int page = 1, int pageSize = 12);
 
-        PartListingServiceModel GetPartById(int id);
+        PartExtendedServiceModel GetPartById(int id);
+
+        int TotalPages();
 
         void Edit(int id, string name, double price, string supplier, int quatity = 1);
     }
