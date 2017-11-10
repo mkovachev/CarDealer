@@ -1,12 +1,12 @@
-﻿using CarDealer.Contracts.Services;
-using CarDealer.Data;
+﻿using CarDealer.Data;
+using CarDealer.Services.Contracts;
 using CarDealer.Services.Models;
 using CarDealer.Services.Models.Suppliers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CarDealer.Services.Implementations
+namespace CarDealer.Services.Services
 {
     public class SupplierService : ISupplierService
     {

@@ -4,7 +4,7 @@ using CarDealer.Services.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace CarDealer.Contracts.Services
+namespace CarDealer.Services.Contracts
 {
     public interface ICustomerService
     {

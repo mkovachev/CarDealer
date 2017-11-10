@@ -1,4 +1,4 @@
-﻿using CarDealer.Contracts.Services;
+﻿using CarDealer.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Reflection;

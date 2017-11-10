@@ -1,4 +1,4 @@
-﻿using CarDealer.Contracts.Services;
+﻿using CarDealer.Services.Contracts;
 using CarDealer.Services.Enums;
 using CarDealer.Services.Models;
 using CarDealer.Web.ViewModels.CustomersViewModels;

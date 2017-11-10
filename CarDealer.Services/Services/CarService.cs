@@ -1,11 +1,11 @@
-﻿using CarDealer.Contracts.Services;
-using CarDealer.Data;
+﻿using CarDealer.Data;
+using CarDealer.Services.Contracts;
 using CarDealer.Services.Models;
 using CarDealer.Services.Models.Cars;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CarDealer.Services.Implementations
+namespace CarDealer.Services.Services
 {
     public class CarService : ICarService
     {

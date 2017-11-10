@@ -1,4 +1,4 @@
-﻿using CarDealer.Contracts.Services;
+﻿using CarDealer.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers
