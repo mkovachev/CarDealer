@@ -12,10 +12,7 @@ namespace CarDealer.Web.Controllers
         public PartsController(IPartService parts) => this.parts = parts;
 
         [Route(nameof(All))]
-        public IActionResult All()
-        {
-            return View(this.parts.GetAllParts());
-        }
+        public IActionResult All(int page = 1) => View(this.parts.GetAllParts(page));
 
         [Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id)
@@ -31,8 +28,8 @@ namespace CarDealer.Web.Controllers
             {
                 Name = part.Name,
                 Price = part.Price,
-                Quantity = part.Quantity,
-                Supplier = part.Supplier
+                Supplier = part.Supplier,
+                Quantity = part.Quantity
             });
         }
 
@@ -45,7 +42,15 @@ namespace CarDealer.Web.Controllers
                 return View(model);
             }
 
-            var 
+            this.parts.Edit(
+                id,
+                model.Name,
+                model.Price,
+                model.Supplier,
+                model.Quantity = 1
+                );
+
+            return RedirectToAction(nameof(All));
         }
     }
 }

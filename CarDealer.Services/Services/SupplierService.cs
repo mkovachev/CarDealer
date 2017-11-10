@@ -25,7 +25,7 @@ namespace CarDealer.Services.Services
                         .Where(s => s.IsImporter == false)
                         .OrderBy(s => s.Name);
                     break;
-                case "importer":
+                case "importers":
                     suppliers
                         .Where(s => s.IsImporter == true)
                         .OrderBy(s => s.Name);
@@ -34,6 +34,7 @@ namespace CarDealer.Services.Services
             }
 
             return suppliers
+                .OrderByDescending(c => c.Id)
                 .Select(s => new SupplierServiceModel
                 {
                     Name = s.Name,

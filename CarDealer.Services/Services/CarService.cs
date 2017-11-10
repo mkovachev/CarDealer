@@ -17,7 +17,7 @@ namespace CarDealer.Services.Services
         {
             var cars = this.db.Cars.AsQueryable();
 
-           if (make != "all")
+            if (make != "all")
             {
                 return cars
                   .Where(c => c.Make == make)
@@ -32,7 +32,7 @@ namespace CarDealer.Services.Services
                   .ToList();
             }
 
-           // if no make is given list all
+            // if no make is given list all
             return cars
                     .OrderBy(c => c.Model)
                     .ThenByDescending(c => c.TravelledDistance)
@@ -51,6 +51,7 @@ namespace CarDealer.Services.Services
             var cars = this.db.Cars.AsQueryable();
 
             return cars
+                   .OrderByDescending(c => c.Id)
                    .Select(s => new CarWithPartsServiceModel
                    {
                        Make = s.Make,

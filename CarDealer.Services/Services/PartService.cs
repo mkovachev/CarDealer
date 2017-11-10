@@ -25,16 +25,17 @@ namespace CarDealer.Services.Services
 
             part.Name = name;
             part.Price = price;
+            part.Supplier.Name = supplier; // TODO
             part.Quantity = quatity;
-            part.Supplier.Name = supplier;
 
-            db.SaveChanges();
+            this.db.SaveChanges();
         }
 
-        public IEnumerable<PartListingServiceModel> GetAllParts(int page = 1)
+        public IEnumerable<PartListingServiceModel> GetAllParts(int page = 1) //paging
         {
             return this.db
                 .Parts
+                .OrderByDescending(p => p.Id) // the most newest on top
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize)
                 .Select(p => new PartListingServiceModel
@@ -42,8 +43,8 @@ namespace CarDealer.Services.Services
                     Id = p.Id, // important: always map id
                     Name = p.Name,
                     Price = p.Price,
-                    Quantity = p.Quantity,
-                    Supplier = p.Supplier.Name
+                    Supplier = p.Supplier.Name,
+                    Quantity = p.Quantity
                 })
                 .ToList();
         }
@@ -58,8 +59,8 @@ namespace CarDealer.Services.Services
                     Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
-                    Quantity = p.Quantity,
-                    Supplier = p.Supplier.Name
+                    Supplier = p.Supplier.Name,
+                    Quantity = p.Quantity
                 })
                 .FirstOrDefault();
         }

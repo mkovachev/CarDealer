@@ -17,7 +17,7 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background-color: #a2e9ff;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -59,6 +59,16 @@
                         <ul class="dropdown-menu">
                             <li><a href="/parts/all">All Parts</a></li>
                             <li><a href="/parts/add">Add Part</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/customers">
+                            Suppliers
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/suppliers/local">Local Suppliers</a></li>
+                            <li><a href="/suppliers/importers">Importer Suppliers</a></li>
                         </ul>
                     </li>
                     <li><a href="/sales">Sales</a></li>
