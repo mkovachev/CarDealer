@@ -1,6 +1,6 @@
 ﻿using CarDealer.Services.Models;
 using CarDealer.Services.Models.Customers;
-using CarDealer.Services.Models.Enums;
+using CarDealer.Services.Enums;
 using System;
 using System.Collections.Generic;
 

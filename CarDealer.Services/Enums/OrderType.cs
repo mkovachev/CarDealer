@@ -1,4 +1,4 @@
-﻿namespace CarDealer.Services.Models.Enums
+﻿namespace CarDealer.Services.Enums
 {
     public enum OrderType
     {
