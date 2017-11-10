@@ -1,7 +1,7 @@
 ﻿using CarDealer.Services.Models.Suppliers;
 using System.Collections.Generic;
 
-namespace CarDealer.Services
+namespace CarDealer.Contracts.Services
 {
     public interface ISupplierService
     {

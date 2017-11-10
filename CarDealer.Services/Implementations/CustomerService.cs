@@ -1,8 +1,9 @@
-﻿using CarDealer.Data;
+﻿using CarDealer.Contracts.Services;
+using CarDealer.Data;
 using CarDealer.Data.Models;
+using CarDealer.Services.Enums;
 using CarDealer.Services.Models;
 using CarDealer.Services.Models.Customers;
-using CarDealer.Services.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

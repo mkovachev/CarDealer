@@ -1,4 +1,4 @@
-﻿namespace CarDealer.Services
+﻿namespace CarDealer.Contracts.Services
 {
     public interface IService
     {

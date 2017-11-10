@@ -2,7 +2,7 @@
 using CarDealer.Services.Models.Cars;
 using System.Collections.Generic;
 
-namespace CarDealer.Services
+namespace CarDealer.Contracts.Services
 {
     public interface ICarService
     {

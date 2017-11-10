@@ -1,6 +1,6 @@
-﻿using CarDealer.Services;
-using CarDealer.Services.Models;
+﻿using CarDealer.Contracts.Services;
 using CarDealer.Services.Enums;
+using CarDealer.Services.Models;
 using CarDealer.Web.ViewModels.CustomersViewModels;
 using Microsoft.AspNetCore.Mvc;
 

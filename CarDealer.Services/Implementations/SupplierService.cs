@@ -1,4 +1,5 @@
-﻿using CarDealer.Data;
+﻿using CarDealer.Contracts.Services;
+using CarDealer.Data;
 using CarDealer.Services.Models;
 using CarDealer.Services.Models.Suppliers;
 using System;

@@ -42,7 +42,17 @@
                         </ul>
                     </li>
                     <li><a href="/sales">Sales</a></li>
-                    <li><a href="/cars/parts">Cars</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/customers">
+                            Cars
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/cars/all">All Cars</a></li>
+                            <li><a href="/cars/make">Cars By Make</a></li>
+                            <li><a href="/cars/parts">Car with Parts</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/parts/all">Parts</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")

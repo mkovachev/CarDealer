@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using CarDealer.Services.Models;
+﻿using CarDealer.Contracts.Services;
 using CarDealer.Data;
-using System.Linq;
+using CarDealer.Services.Models;
 using CarDealer.Services.Models.Cars;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarDealer.Services.Implementations
 {
@@ -14,18 +15,34 @@ namespace CarDealer.Services.Implementations
 
         public IEnumerable<CarModel> ByMake(string make)
         {
-            return this.db
-                          .Cars
-                          .Where(c => c.Make == make)
-                          .OrderBy(c => c.Model)
-                          .ThenByDescending(c => c.TravelledDistance)
-                          .Select(c => new CarModel
-                          {
-                              Make = c.Make,
-                              Model = c.Model,
-                              TravelledDistance = c.TravelledDistance / 1000
-                          })
-                          .ToList();
+            var cars = this.db.Cars.AsQueryable();
+
+           if (make != "all")
+            {
+                return cars
+                  .Where(c => c.Make == make)
+                  .OrderBy(c => c.Model)
+                  .ThenByDescending(c => c.TravelledDistance)
+                  .Select(c => new CarModel
+                  {
+                      Make = c.Make,
+                      Model = c.Model,
+                      TravelledDistance = c.TravelledDistance / 1000
+                  })
+                  .ToList();
+            }
+
+           // if no make is given list all
+            return cars
+                    .OrderBy(c => c.Model)
+                    .ThenByDescending(c => c.TravelledDistance)
+                    .Select(c => new CarModel
+                    {
+                        Make = c.Make,
+                        Model = c.Model,
+                        TravelledDistance = c.TravelledDistance / 1000
+                    })
+                    .ToList();
 
         }
 
