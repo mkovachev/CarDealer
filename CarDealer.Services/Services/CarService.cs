@@ -59,10 +59,10 @@ namespace CarDealer.Services.Services
                        Id = c.Id,
                        Make = c.Make,
                        Model = c.Model,
-                       Parts = c.Parts.Select(p => new PartBasicServiceModel // TODO
+                       Parts = c.Parts.Select(p => new PartBasicServiceModel
                        {
-                           Name = p.Part.Name,
-                           Price = p.Part.Price
+                           Name = p.Part.Name, // TODO
+                           Price = p.Part.Price // TODO
                        })
                    })
                 .ToList();

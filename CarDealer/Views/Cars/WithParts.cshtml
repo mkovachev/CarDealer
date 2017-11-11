@@ -3,13 +3,12 @@
     ViewData["Title"] = "Cars with Parts";
 }
 <h2>Cars with Parts</h2>
+
 <table class="table table-bordered table-hover">
     @foreach (var car in Model)
     {
         <tr>
-            <td>@car.Make</td>
-            <td>@car.Model</td>
-            <td>@car.Parts</td>
+            <td>@car.Make @car.Model</td>
         </tr>
         <tr>
             <td>
@@ -22,5 +21,4 @@
             </td>
         </tr>
     }
-
 </table>

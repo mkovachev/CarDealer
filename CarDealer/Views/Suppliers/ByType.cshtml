@@ -2,7 +2,8 @@
 @{
     ViewData["Title"] = "Suppliers";
 }
-<h2>Suppliers</h2>
+<h2>@ViewData["Title"]</h2>
+
 <table class="table table-bordered table-hover">
     @foreach (var supplier in Model)
     {
