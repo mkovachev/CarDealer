@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace CarDealer.Services.ServiceModels.Suppliers
 {
-    public class SupplierServiceModel
+    public class SupplierBasicServiceModel
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public IEnumerable<PartBasicServiceModel> Parts { get; set; }

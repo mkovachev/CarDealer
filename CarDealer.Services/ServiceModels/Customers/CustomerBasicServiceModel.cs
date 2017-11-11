@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CarDealer.Services.ServiceModels.Customers
 {
-    public class CustomerServiceModel
+    public class CustomerBasicServiceModel
     {
         public int Id { get; set; }
 

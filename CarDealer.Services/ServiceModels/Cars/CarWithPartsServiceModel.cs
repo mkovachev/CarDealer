@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CarDealer.Services.ServiceModels.Cars
 {
-    public class CarWithPartsServiceModel : CarServiceModel
+    public class CarWithPartsServiceModel : CarBasicServiceModel
     {
         public IEnumerable<PartBasicServiceModel> Parts { get; set; }
     }

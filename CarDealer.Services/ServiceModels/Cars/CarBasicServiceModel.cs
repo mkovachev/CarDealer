@@ -2,8 +2,10 @@
 
 namespace CarDealer.Services.ServiceModels.Cars
 {
-    public class CarServiceModel
+    public class CarBasicServiceModel
     {
+        public int Id { get; set; }
+
         public string Model { get; set; }
 
         public string Make { get; set; }

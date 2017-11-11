@@ -23,7 +23,7 @@ namespace CarDealer.Web.Controllers
                 return NotFound();
             }
 
-            return View(new CustomerServiceModel
+            return View(new CustomerBasicServiceModel
             {
                 Name = customer.Name,
                 BirthDate = customer.BirthDate,
@@ -33,7 +33,7 @@ namespace CarDealer.Web.Controllers
 
         [HttpPost]
         [Route(nameof(Edit) + "/{id}")]
-        public IActionResult Edit(int id, CustomerServiceModel model)
+        public IActionResult Edit(int id, CustomerBasicServiceModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace CarDealer.Web.Controllers
 
         [HttpPost]
         [Route(nameof(Add))]
-        public IActionResult Add(CustomerServiceModel model)
+        public IActionResult Add(CustomerBasicServiceModel model)
         {
             if (!ModelState.IsValid)
             {

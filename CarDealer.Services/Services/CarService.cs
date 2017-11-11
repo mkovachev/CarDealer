@@ -13,7 +13,7 @@ namespace CarDealer.Services.Services
 
         public CarService(CarDealerDbContext db) => this.db = db;
 
-        public IEnumerable<CarServiceModel> GetCarsByMake(string make)
+        public IEnumerable<CarBasicServiceModel> GetCarsByMake(string make)
         {
             var cars = this.db.Cars.AsQueryable();
 
@@ -23,8 +23,9 @@ namespace CarDealer.Services.Services
                   .Where(c => c.Make == make)
                   .OrderBy(c => c.Model)
                   .ThenByDescending(c => c.TravelledDistance)
-                  .Select(c => new CarServiceModel
+                  .Select(c => new CarBasicServiceModel
                   {
+                      //Id = c.Id,
                       Make = c.Make,
                       Model = c.Model,
                       TravelledDistance = c.TravelledDistance / 1000
@@ -36,8 +37,9 @@ namespace CarDealer.Services.Services
             return cars
                     .OrderBy(c => c.Model)
                     .ThenByDescending(c => c.TravelledDistance)
-                    .Select(c => new CarServiceModel
+                    .Select(c => new CarBasicServiceModel
                     {
+                        //Id = c.Id,
                         Make = c.Make,
                         Model = c.Model,
                         TravelledDistance = c.TravelledDistance / 1000
@@ -52,11 +54,12 @@ namespace CarDealer.Services.Services
 
             return cars
                    .OrderByDescending(c => c.Id)
-                   .Select(s => new CarWithPartsServiceModel
+                   .Select(c => new CarWithPartsServiceModel
                    {
-                       Make = s.Make,
-                       Model = s.Model,
-                       Parts = s.Parts.Select(p => new PartBasicServiceModel // TODO
+                       //Id = c.Id,
+                       Make = c.Make,
+                       Model = c.Model,
+                       Parts = c.Parts.Select(p => new PartBasicServiceModel // TODO
                        {
                            Name = p.Part.Name,
                            Price = p.Part.Price

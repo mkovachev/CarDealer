@@ -7,11 +7,11 @@ namespace CarDealer.Services.Contracts
 {
     public interface ICustomerService
     {
-        IEnumerable<CustomerServiceModel> GetCustomersByOrderType(OrderType orderType);
+        IEnumerable<CustomerBasicServiceModel> GetCustomersByOrderType(OrderType orderType);
 
-        CustomersTotalSalesServiceModel GetBoughtCarsByUserId(int id);
+        CustomersMoneySpentServiceModel GetBoughtCarsByUserId(int id);
 
-        CustomerServiceModel GetCustomerById(int id);
+        CustomerBasicServiceModel GetCustomerById(int id);
 
         void Create(string name, DateTime birthDate, bool isYoungDriver);
 

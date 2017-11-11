@@ -6,7 +6,7 @@ namespace CarDealer.Web.ViewModels.CustomersViewModels
 {
     public class AllCustomersViewModel
     {
-        public IEnumerable<CustomerServiceModel> AllCustomers { get; set; }
+        public IEnumerable<CustomerBasicServiceModel> AllCustomers { get; set; }
 
         public OrderType OrderType { get; set; }
     }

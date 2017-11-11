@@ -14,7 +14,7 @@ namespace CarDealer.Services.Services
 
         public SupplierService(CarDealerDbContext db) => this.db = db;
 
-        public IEnumerable<SupplierServiceModel> GetSuppliersByType(string supplierType)
+        public IEnumerable<SupplierBasicServiceModel> GetSuppliersByType(string supplierType)
         {
             var suppliers = this.db.Suppliers.AsQueryable();
 
@@ -35,7 +35,7 @@ namespace CarDealer.Services.Services
 
             return suppliers
                 .OrderByDescending(c => c.Id)
-                .Select(s => new SupplierServiceModel
+                .Select(s => new SupplierBasicServiceModel
                 {
                     Name = s.Name,
                     Parts = s.Parts.Select(p => new PartBasicServiceModel

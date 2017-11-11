@@ -5,6 +5,6 @@ namespace CarDealer.Services.Contracts
 {
     public interface ISupplierService
     {
-        IEnumerable<SupplierServiceModel> GetSuppliersByType(string supplierType);
+        IEnumerable<SupplierBasicServiceModel> GetSuppliersByType(string supplierType);
     }
 }

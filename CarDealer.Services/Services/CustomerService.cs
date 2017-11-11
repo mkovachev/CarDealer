@@ -15,11 +15,11 @@ namespace CarDealer.Services.Services
 
         public CustomerService(CarDealerDbContext db) => this.db = db;
 
-        public CustomerServiceModel GetCustomerById(int id)
+        public CustomerBasicServiceModel GetCustomerById(int id)
             => this.db
                 .Customers
                 .Where(c => c.Id == id)
-                .Select(c => new CustomerServiceModel
+                .Select(c => new CustomerBasicServiceModel
                 {
                     Id = c.Id,
                     Name = c.Name,
@@ -58,7 +58,7 @@ namespace CarDealer.Services.Services
             this.db.SaveChanges();
         }
 
-        public IEnumerable<CustomerServiceModel> GetCustomersByOrderType(OrderType orderType)
+        public IEnumerable<CustomerBasicServiceModel> GetCustomersByOrderType(OrderType orderType)
         {
             var customersQuery = this.db.Customers.AsQueryable();
 
@@ -79,7 +79,7 @@ namespace CarDealer.Services.Services
             }
 
             return customersQuery
-                .Select(c => new CustomerServiceModel
+                .Select(c => new CustomerBasicServiceModel
                 {
                     Id = c.Id,
                     Name = c.Name,
@@ -89,12 +89,12 @@ namespace CarDealer.Services.Services
                 .ToList();
         }
 
-        public CustomersTotalSalesServiceModel GetBoughtCarsByUserId(int id)
+        public CustomersMoneySpentServiceModel GetBoughtCarsByUserId(int id)
         {
             return this.db
                       .Customers
                       .Where(c => c.Id == id)
-                      .Select(c => new CustomersTotalSalesServiceModel
+                      .Select(c => new CustomersMoneySpentServiceModel
                       {
                           Id = c.Id,
                           Name = c.Name,
