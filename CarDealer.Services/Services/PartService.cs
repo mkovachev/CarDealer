@@ -1,4 +1,5 @@
 ﻿using CarDealer.Data;
+using CarDealer.Data.Models;
 using CarDealer.Services.Contracts;
 using CarDealer.Services.ServiceModels.Parts;
 using System.Collections.Generic;
@@ -12,7 +13,21 @@ namespace CarDealer.Services.Services
 
         public PartService(CarDealerDbContext db) => this.db = db;
 
-        public void Edit(int id, string name, double price, string supplier, int quatity = 1)
+        public void Add(int id, string name, double price, int quantity, int supplierId)
+        {
+            var part = new Part
+            {
+                Name = name,
+                Price = price,
+                Quantity = quantity > 0 ? quantity : 1,
+                SupplierId = supplierId
+            };
+
+            this.db.Add(part);
+            this.db.SaveChanges();
+        }
+
+        public void Edit(int id, string name, double price, int quatity, int supplierId)
         {
             var part = this.db.Parts.Find(id);
 
@@ -23,42 +38,42 @@ namespace CarDealer.Services.Services
 
             part.Name = name;
             part.Price = price;
-            part.Supplier.Name = supplier; // TODO
             part.Quantity = quatity;
+            part.Id = supplierId;
 
             this.db.SaveChanges();
         }
 
         //witn pagination
-        public IEnumerable<PartExtendedServiceModel> GetAllParts(int page = 1, int pageSize = 12)
+        public IEnumerable<PartWithSuppliersServiceModel> GetAllParts(int page = 1, int pageSize = 12)
         {
             return this.db
                 .Parts
                 .OrderByDescending(p => p.Id) // the most newest on top
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .Select(p => new PartExtendedServiceModel
+                .Select(p => new PartWithSuppliersServiceModel
                 {
-                    Id = p.Id, // important: always map id
+                    Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
-                    Supplier = p.Supplier.Name,
+                    SupplierId = p.Supplier.Id,
                     Quantity = p.Quantity
                 })
                 .ToList();
         }
 
-        public PartExtendedServiceModel GetPartById(int id)
+        public PartWithSuppliersServiceModel GetPartById(int id)
         {
             return this.db
                 .Parts
                 .Where(p => p.Id == id)
-                .Select(p => new PartExtendedServiceModel
+                .Select(p => new PartWithSuppliersServiceModel
                 {
                     Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
-                    Supplier = p.Supplier.Name,
+                    SupplierId = p.Supplier.Id,
                     Quantity = p.Quantity
                 })
                 .FirstOrDefault();

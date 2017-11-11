@@ -1,4 +1,4 @@
-﻿@model PartExtendedServiceModel
+﻿@model PartWithSuppliersServiceModel
 @{
     ViewData["Title"] = "Add Or Edit Part";
 }
@@ -7,23 +7,23 @@
         <form method="post">
             <div class="form-group">
                 <label asp-for="Name">Name</label>
-                <input asp-for=" Name" type="text" class="form-control">
+                <input asp-for="Name" type="text" class="form-control">
                 <span asp-validation-for="Name" class="form-text text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price">Price</label>
-                <input asp-for=" Price" class="form-control">
-                <span asp-validation-for="Price"></span>
+                <input asp-for="Price" class="form-control">
+                <span asp-validation-for="Price" class="form-text text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Quantity">Quantity</label>
-                <input asp-for=" Quantity" min="1" class="form-control">
-                <span asp-validation-for="Quantity"></span>
+                <input asp-for="Quantity" min="1" class="form-control">
+                <span asp-validation-for="Quantity" class="form-text text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Supplier">Supplier</label>
-                <input asp-for=" Supplier" class="form-control">
-                <span asp-validation-for="Supplier"></span>
+                <label asp-for="SupplierId">Supplier</label>
+                <select asp-for="SupplierId" class="form-control" asp-items="Model.Suppliers">></select>
+                <span asp-validation-for="SupplierId" class="form-text text-danger"></span>
             </div>
             <div>
                 <button type="submit" class="btn btn-info btn-sm">Save Part</button>

@@ -5,7 +5,7 @@ namespace CarDealer.Web.ViewModels.PartsViewModels
 {
     public class PartPaginationViewModel
     {
-        public IEnumerable<PartExtendedServiceModel> Parts { get; set; }
+        public IEnumerable<PartWithSuppliersServiceModel> Parts { get; set; }
 
         public int Current { get; set; }
 

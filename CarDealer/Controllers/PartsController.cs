@@ -2,7 +2,9 @@
 using CarDealer.Services.ServiceModels.Parts;
 using CarDealer.Web.ViewModels.PartsViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Linq;
 
 namespace CarDealer.Web.Controllers
 {
@@ -12,8 +14,13 @@ namespace CarDealer.Web.Controllers
         private const int PageSize = 25;
 
         private readonly IPartService parts;
+        private readonly ISupplierService suppliers;
 
-        public PartsController(IPartService parts) => this.parts = parts;
+        public PartsController(IPartService parts, ISupplierService suppliers)
+        {
+            this.parts = parts;
+            this.suppliers = suppliers;
+        }
 
         [Route(nameof(All))]
         public IActionResult All(int page = 1)
@@ -21,21 +28,44 @@ namespace CarDealer.Web.Controllers
             {
                 Parts = this.parts.GetAllParts(page, PageSize),
                 Current = page,
-                TotalPages = (int)Math.Ceiling(this.parts.TotalPages() / (double) PageSize)
-                
+                TotalPages = (int)Math.Ceiling(this.parts.TotalPages() / (double)PageSize)
+
             });
 
         [Route(nameof(Add))]
-        public IActionResult Add(int id)
+        public IActionResult Add()
         {
-            return View();
+            // dropdown for suppliers
+            return View(new PartWithSuppliersServiceModel
+            {
+                Suppliers = this.suppliers
+                .GetAllSuppliers()
+                .Select(s => new SelectListItem
+                {
+                    Text = s.Name,
+                    Value = s.Id.ToString()
+                })
+            });
         }
 
         [HttpPost]
         [Route(nameof(Add))]
-        public IActionResult Add(int id, PartExtendedServiceModel model)
+        public IActionResult Add(int id, PartWithSuppliersServiceModel model)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            this.parts.Add(
+                 id,
+                 model.Name,
+                 model.Price,
+                 model.Quantity,
+                 model.SupplierId
+                 );
+
+            return RedirectToAction(nameof(All));
         }
 
         [Route(nameof(Edit) + "/{id}")]
@@ -48,18 +78,18 @@ namespace CarDealer.Web.Controllers
                 return NotFound();
             }
 
-            return View(new PartExtendedServiceModel
+            return View(new PartWithSuppliersServiceModel
             {
                 Name = part.Name,
                 Price = part.Price,
-                Supplier = part.Supplier,
+                SupplierId = part.SupplierId,
                 Quantity = part.Quantity
             });
         }
 
         [HttpPost]
         [Route(nameof(Edit) + "/{id}")]
-        public IActionResult Edit(int id, PartExtendedServiceModel model)
+        public IActionResult Edit(int id, PartWithSuppliersServiceModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -70,8 +100,8 @@ namespace CarDealer.Web.Controllers
                 id,
                 model.Name,
                 model.Price,
-                model.Supplier,
-                model.Quantity = 1
+                model.Quantity,
+                model.SupplierId
                 );
 
             return RedirectToAction(nameof(All));
