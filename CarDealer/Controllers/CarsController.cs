@@ -18,7 +18,7 @@ namespace CarDealer.Web.Controllers
         }
 
         [Route("{make}", Order = 2)]
-        public IActionResult Make(string make)
+        public IActionResult All(string make)
         {
             var carsbyMake = this.cars.GetCarsByMake(make);
 
