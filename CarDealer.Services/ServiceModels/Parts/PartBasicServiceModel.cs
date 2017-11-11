@@ -14,5 +14,7 @@ namespace CarDealer.Services.ServiceModels.Parts
 
         [Range(1, int.MaxValue)]
         public int Quantity { get; set; }
+
+        public string Supplier { get; set; }
     }
 }

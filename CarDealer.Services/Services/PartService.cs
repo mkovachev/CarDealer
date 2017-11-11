@@ -49,7 +49,7 @@ namespace CarDealer.Services.Services
         {
             return this.db
                 .Parts
-                .OrderByDescending(p => p.Id) // the most newest on top
+                .OrderByDescending(p => p.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .Select(p => new PartWithSuppliersServiceModel
@@ -57,7 +57,7 @@ namespace CarDealer.Services.Services
                     Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
-                    SupplierId = p.Supplier.Id,
+                    Supplier = p.Supplier.Name,
                     Quantity = p.Quantity
                 })
                 .ToList();
