@@ -25,7 +25,7 @@ namespace CarDealer.Services.Services
                   .ThenByDescending(c => c.TravelledDistance)
                   .Select(c => new CarBasicServiceModel
                   {
-                      //Id = c.Id,
+                      Id = c.Id,
                       Make = c.Make,
                       Model = c.Model,
                       TravelledDistance = c.TravelledDistance / 1000
@@ -39,7 +39,7 @@ namespace CarDealer.Services.Services
                     .ThenByDescending(c => c.TravelledDistance)
                     .Select(c => new CarBasicServiceModel
                     {
-                        //Id = c.Id,
+                        Id = c.Id,
                         Make = c.Make,
                         Model = c.Model,
                         TravelledDistance = c.TravelledDistance / 1000
@@ -56,7 +56,7 @@ namespace CarDealer.Services.Services
                    .OrderByDescending(c => c.Id)
                    .Select(c => new CarWithPartsServiceModel
                    {
-                       //Id = c.Id,
+                       Id = c.Id,
                        Make = c.Make,
                        Model = c.Model,
                        Parts = c.Parts.Select(p => new PartBasicServiceModel // TODO

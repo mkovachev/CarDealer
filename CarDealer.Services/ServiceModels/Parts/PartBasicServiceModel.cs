@@ -1,4 +1,6 @@
-﻿namespace CarDealer.Services.ServiceModels.Parts
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CarDealer.Services.ServiceModels.Parts
 {
     public class PartBasicServiceModel
     {
@@ -6,6 +8,7 @@
 
         public string Name { get; set; }
 
+        [Range(0, double.MaxValue)]
         public double Price { get; set; }
     }
 }

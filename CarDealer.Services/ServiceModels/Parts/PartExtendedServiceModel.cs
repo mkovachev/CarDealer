@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using CarDealer.Services.ServiceModels.Suppliers;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CarDealer.Services.ServiceModels.Parts
 {
     public class PartExtendedServiceModel: PartBasicServiceModel
     {
+        [Range(1, int.MaxValue)]
         public int Quantity { get; set; }
 
         public string Supplier { get; set; }
@@ -12,7 +14,8 @@ namespace CarDealer.Services.ServiceModels.Parts
         [Display(Name = "Supplier")]
         public int SupplierId { get; set; }
 
-        //public IEnumerable
+        // dropdown suppliers data
+        public IEnumerable<SupplierBasicServiceModel> Suppliers { get; set; }
 
     }
 }

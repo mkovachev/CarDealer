@@ -25,6 +25,19 @@ namespace CarDealer.Web.Controllers
                 
             });
 
+        [Route(nameof(Add))]
+        public IActionResult Add(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route(nameof(Add))]
+        public IActionResult Add(int id, PartExtendedServiceModel model)
+        {
+            return View();
+        }
+
         [Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id)
         {
@@ -57,7 +70,7 @@ namespace CarDealer.Web.Controllers
                 id,
                 model.Name,
                 model.Price,
-                model.Supplier, // TODO
+                model.Supplier,
                 model.Quantity = 1
                 );
 
