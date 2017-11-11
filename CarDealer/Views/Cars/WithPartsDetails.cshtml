@@ -5,20 +5,28 @@
 <h2>Cars with Parts</h2>
 
 <table class="table table-bordered table-hover">
-    @foreach (var car in Model)
-    {
+    <thead>
         <tr>
-            <td>@car.Make @car.Model</td>
+            <th>Car Model</th>
+            <th>Parts</th>
         </tr>
-        <tr>
-            <td>
-                <ul>
-                    @foreach (var part in car.Parts)
-                    {
-                        <li>@part.Name: $@part.Price.ToString("F2")</li>
-                    }
-                </ul>
-            </td>
-        </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Make @car.Model</td>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        @foreach (var part in car.Parts)
+                        {
+                            <li>@part.Name: $@part.Price.ToString("F2")</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

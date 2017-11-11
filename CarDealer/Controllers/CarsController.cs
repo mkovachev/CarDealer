@@ -11,18 +11,9 @@ namespace CarDealer.Web.Controllers
         public CarsController(ICarService cars) => this.cars = cars;
 
         [Route(nameof(WithPartsDetails), Order = 1)]
-        public IActionResult WithPartsDetails()
-        {
-            var carsWithParts = this.cars.GetCarsWithParts();
-            return View(carsWithParts);
-        }
+        public IActionResult WithPartsDetails() => View(this.cars.GetCarsWithParts());
 
         [Route("{make}", Order = 2)]
-        public IActionResult All(string make)
-        {
-            var carsbyMake = this.cars.GetCarsByMake(make);
-
-            return View(carsbyMake);
-        }
+        public IActionResult All(string make) => View(this.cars.GetCarsByMake(make));
     }
 }

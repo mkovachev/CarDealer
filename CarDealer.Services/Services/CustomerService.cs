@@ -99,9 +99,9 @@ namespace CarDealer.Services.Services
                           Id = c.Id,
                           Name = c.Name,
                           BoughtCars = c.Sales.Count(),
-                          TotalSpentMoney = c.Sales.
-                          Sum(s => s.Car.Parts.Sum(p => p.Part.Price)) // TODO
-                          })
+                          TotalSpentMoney = c.Sales
+                          .Sum(s => s.Car.Parts.Sum(p => p.Part.Price)) // TODO
+                      })
                       .FirstOrDefault();
         }
 

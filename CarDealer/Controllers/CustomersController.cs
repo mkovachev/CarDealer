@@ -78,10 +78,10 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction(nameof(All), new { orderType = OrderType.Ascending });
         }
 
-        [Route("{id}", Order = 2)]
+        [Route("{id}")]
         public IActionResult UserBoughtCars(int id) => View(this.customers.GetBoughtCarsByUserId(id));
 
-        [Route("all/{orderType}", Order = 2)]
+        [Route("all/{orderType}")]
         public IActionResult All(OrderType orderType)
         {
             var orderedCustomers = this.customers.GetCustomersByOrderType(orderType);
