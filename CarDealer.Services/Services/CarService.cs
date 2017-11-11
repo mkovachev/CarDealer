@@ -33,7 +33,7 @@ namespace CarDealer.Services.Services
                   .ToList();
             }
 
-            // if no make is given list all
+            // if no make - list all
             return cars
                     .OrderBy(c => c.Model)
                     .ThenByDescending(c => c.TravelledDistance)
