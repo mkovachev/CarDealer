@@ -7,6 +7,6 @@ namespace CarDealer.Services.ServiceModels.Suppliers
     {
         public string Name { get; set; }
 
-        public IEnumerable<PartServiceModel> Parts { get; set; }
+        public IEnumerable<PartBasicServiceModel> Parts { get; set; }
     }
 }

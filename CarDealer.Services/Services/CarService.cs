@@ -56,7 +56,7 @@ namespace CarDealer.Services.Services
                    {
                        Make = s.Make,
                        Model = s.Model,
-                       Parts = s.Parts.Select(p => new PartServiceModel // TODO
+                       Parts = s.Parts.Select(p => new PartBasicServiceModel // TODO
                        {
                            Name = p.Part.Name,
                            Price = p.Part.Price

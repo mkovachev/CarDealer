@@ -57,7 +57,7 @@ namespace CarDealer.Web.Controllers
                 id,
                 model.Name,
                 model.Price,
-                model.Supplier,
+                model.Supplier, // TODO
                 model.Quantity = 1
                 );
 

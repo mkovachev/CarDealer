@@ -38,7 +38,7 @@ namespace CarDealer.Services.Services
                 .Select(s => new SupplierServiceModel
                 {
                     Name = s.Name,
-                    Parts = s.Parts.Select(p => new PartServiceModel
+                    Parts = s.Parts.Select(p => new PartBasicServiceModel
                     {
                         Name = p.Name,
                         Price = p.Price

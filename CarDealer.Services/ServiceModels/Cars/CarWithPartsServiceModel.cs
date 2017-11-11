@@ -5,6 +5,6 @@ namespace CarDealer.Services.ServiceModels.Cars
 {
     public class CarWithPartsServiceModel : CarServiceModel
     {
-        public IEnumerable<PartServiceModel> Parts { get; set; }
+        public IEnumerable<PartBasicServiceModel> Parts { get; set; }
     }
 }

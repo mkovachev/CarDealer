@@ -29,7 +29,8 @@ namespace CarDealer.Services.Services
             this.db.SaveChanges();
         }
 
-        public IEnumerable<PartExtendedServiceModel> GetAllParts(int page = 1, int pageSize = 12) //paging
+        //witn pagination
+        public IEnumerable<PartExtendedServiceModel> GetAllParts(int page = 1, int pageSize = 12)
         {
             return this.db
                 .Parts
