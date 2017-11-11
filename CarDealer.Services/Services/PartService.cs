@@ -39,7 +39,7 @@ namespace CarDealer.Services.Services
             part.Name = name;
             part.Price = price;
             part.Quantity = quatity;
-            part.Id = supplierId;
+            part.SupplierId = supplierId;
 
             this.db.SaveChanges();
         }

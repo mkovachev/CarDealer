@@ -78,12 +78,16 @@ namespace CarDealer.Web.Controllers
                 return NotFound();
             }
 
+            // dropdown for suppliers
             return View(new PartWithSuppliersServiceModel
             {
-                Name = part.Name,
-                Price = part.Price,
-                SupplierId = part.SupplierId,
-                Quantity = part.Quantity
+                Suppliers = this.suppliers
+                .GetAllSuppliers()
+                .Select(s => new SelectListItem
+                {
+                    Text = s.Name,
+                    Value = s.Id.ToString()
+                })
             });
         }
 
