@@ -45,7 +45,7 @@ namespace CarDealer.Services.Services
 
         }
 
-        public void Create(string name, DateTime birthDate, bool isYoungDriver)
+        public void Add(string name, DateTime birthDate, bool isYoungDriver)
         {
             var customer = new Customer
             {
@@ -108,11 +108,6 @@ namespace CarDealer.Services.Services
         public bool Exists(int id)
         {
             return this.db.Customers.Any(c => c.Id == id);
-        }
-
-        public bool ExistsByName(string name)
-        {
-            return this.db.Customers.Any(c => c.Name == name);
         }
     }
 }

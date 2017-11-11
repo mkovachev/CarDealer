@@ -69,7 +69,7 @@ namespace CarDealer.Web.Controllers
                 return View(model);
             }
 
-            this.customers.Create(
+            this.customers.Add(
                 model.Name,
                 model.BirthDate,
                 model.IsYoungDriver

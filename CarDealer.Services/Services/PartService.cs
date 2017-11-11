@@ -13,7 +13,7 @@ namespace CarDealer.Services.Services
 
         public PartService(CarDealerDbContext db) => this.db = db;
 
-        public void Add(int id, string name, double price, int quantity, int supplierId)
+        public void Add(string name, double price, int quantity, int supplierId)
         {
             var part = new Part
             {
@@ -80,5 +80,10 @@ namespace CarDealer.Services.Services
         }
 
         public int TotalPages() => this.db.Parts.Count();
+
+        public bool Exists(int id)
+        {
+            return this.db.Suppliers.Any(s => s.Id == id);
+        }
     }
 }

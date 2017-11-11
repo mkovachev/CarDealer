@@ -13,7 +13,7 @@ namespace CarDealer.Services.Contracts
 
         CustomerBasicServiceModel GetCustomerById(int id);
 
-        void Create(string name, DateTime birthDate, bool isYoungDriver);
+        void Add(string name, DateTime birthDate, bool isYoungDriver);
 
         void Edit(int id, string name, DateTime birthDate, bool isYoungDriver);
 

@@ -11,8 +11,10 @@ namespace CarDealer.Services.Contracts
 
         int TotalPages();
 
+        void Add(string name, double price, int quantity, int supplierId);
+
         void Edit(int id, string name, double price, int quantity, int supplierId);
 
-        void Add(int id, string name, double price, int quantity, int supplierId);
+        bool Exists(int id);
     }
 }
