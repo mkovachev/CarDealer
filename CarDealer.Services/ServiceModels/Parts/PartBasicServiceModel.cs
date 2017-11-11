@@ -6,6 +6,7 @@ namespace CarDealer.Services.ServiceModels.Parts
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         [Range(0, double.MaxValue)]
