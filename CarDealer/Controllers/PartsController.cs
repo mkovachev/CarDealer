@@ -52,19 +52,12 @@ namespace CarDealer.Web.Controllers
         [Route(nameof(Add))]
         public IActionResult Add(int id, PartWithSuppliersServiceModel model)
         {
-            //validate supplier
-            if (model.) // supplier exists
-            {
-                ModelState.AddModelError(nameof(PartWithSuppliersServiceModel.SupplierId), "Invalid Supplier");
-            }
-
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
             this.parts.Add(
-                 id,
                  model.Name,
                  model.Price,
                  model.Quantity,
