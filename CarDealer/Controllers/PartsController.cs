@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace CarDealer.Web.Controllers
 {
-    [Route("parts")]
+    //[Route("parts")]
     public class PartsController : Controller
     {
         private const int PageSize = 25;
@@ -22,7 +22,7 @@ namespace CarDealer.Web.Controllers
             this.suppliers = suppliers;
         }
 
-        [Route(nameof(All))]
+        //[Route(nameof(All))]
         public IActionResult All(int page = 1)
             => View(new PartPaginationViewModel
             {
@@ -32,7 +32,7 @@ namespace CarDealer.Web.Controllers
 
             });
 
-        [Route(nameof(Add))]
+        //[Route(nameof(Add))]
         public IActionResult Add()
         {
             // dropdown for suppliers
@@ -49,7 +49,7 @@ namespace CarDealer.Web.Controllers
         }
 
         [HttpPost]
-        [Route(nameof(Add))]
+        //[Route(nameof(Add))]
         public IActionResult Add(int id, PartWithSuppliersServiceModel model)
         {
             if (!ModelState.IsValid)
@@ -67,7 +67,7 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction(nameof(All));
         }
 
-        [Route(nameof(Edit) + "/{id}")]
+        //[Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id)
         {
             var part = this.parts.GetPartById(id);
@@ -91,7 +91,7 @@ namespace CarDealer.Web.Controllers
         }
 
         [HttpPost]
-        [Route(nameof(Edit) + "/{id}")]
+        //[Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id, PartWithSuppliersServiceModel model)
         {
             if (!ModelState.IsValid)
@@ -106,6 +106,15 @@ namespace CarDealer.Web.Controllers
                 model.Quantity,
                 model.SupplierId
                 );
+
+            return RedirectToAction(nameof(All));
+        }
+
+        public IActionResult Delete(int id) => View(id);
+
+        public IActionResult DeleteFromDb(int id)
+        {
+            this.parts.Delete(id);
 
             return RedirectToAction(nameof(All));
         }

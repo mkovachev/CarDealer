@@ -9,11 +9,13 @@ namespace CarDealer.Services.Contracts
 
         PartWithSuppliersServiceModel GetPartById(int id);
 
-        int TotalPages();
-
         void Add(string name, double price, int quantity, int supplierId);
 
         void Edit(int id, string name, double price, int quantity, int supplierId);
+
+        void Delete(int id);
+
+        int TotalPages();
 
         bool Exists(int id);
     }

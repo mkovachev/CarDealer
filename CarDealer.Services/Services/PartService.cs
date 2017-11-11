@@ -79,6 +79,19 @@ namespace CarDealer.Services.Services
                 .FirstOrDefault();
         }
 
+        public void Delete(int id)
+        {
+            var part = this.db.Parts.Find(id);
+
+            if(part == null)
+            {
+                return;
+            }
+
+            this.db.Parts.Remove(part);
+            this.db.SaveChanges();
+        }
+
         public int TotalPages() => this.db.Parts.Count();
 
         public bool Exists(int id)
