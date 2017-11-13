@@ -1,6 +1,7 @@
 ﻿using CarDealer.Services.Contracts;
 using CarDealer.Services.ServiceModels.Parts;
 using CarDealer.Web.ViewModels.PartsViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -22,7 +23,6 @@ namespace CarDealer.Web.Controllers
             this.suppliers = suppliers;
         }
 
-        //[Route(nameof(All))]
         public IActionResult All(int page = 1)
             => View(new PartPaginationViewModel
             {
@@ -32,7 +32,7 @@ namespace CarDealer.Web.Controllers
 
             });
 
-        //[Route(nameof(Add))]
+        [Authorize]
         public IActionResult Add()
         {
             // dropdown for suppliers
@@ -48,8 +48,8 @@ namespace CarDealer.Web.Controllers
             });
         }
 
+        [Authorize]
         [HttpPost]
-        //[Route(nameof(Add))]
         public IActionResult Add(int id, PartWithSuppliersServiceModel model)
         {
             if (!ModelState.IsValid)
@@ -67,7 +67,6 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction(nameof(All));
         }
 
-        //[Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id)
         {
             var part = this.parts.GetPartById(id);
@@ -91,7 +90,6 @@ namespace CarDealer.Web.Controllers
         }
 
         [HttpPost]
-        //[Route(nameof(Edit) + "/{id}")]
         public IActionResult Edit(int id, PartWithSuppliersServiceModel model)
         {
             if (!ModelState.IsValid)

@@ -2,6 +2,7 @@
 using CarDealer.Services.Enums;
 using CarDealer.Services.ServiceModels.Customers;
 using CarDealer.Web.ViewModels.CustomersViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarDealer.Web.Controllers
@@ -57,9 +58,11 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction(nameof(All), new { orderType = OrderType.Ascending });
         }
 
+        [Authorize]
         [Route(nameof(Add))]
         public IActionResult Add() => View();
-
+        
+        [Authorize]
         [HttpPost]
         [Route(nameof(Add))]
         public IActionResult Add(CustomerBasicServiceModel model)
