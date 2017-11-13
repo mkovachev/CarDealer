@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using CarDealer.ViewModels.AccountViewModels;
+using CarDealer.Web.ViewModels.AccountViewModels;
 using CarDealer.Data.Models;
 
 namespace CarDealer.Controllers
